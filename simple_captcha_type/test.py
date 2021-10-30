@@ -1,6 +1,7 @@
 import os
 import unittest
-import captcha_decoder
+
+from simple_captcha_type import captcha_decoder
 
 
 class TestDecoderOnDataset(unittest.TestCase):

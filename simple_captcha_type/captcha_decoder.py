@@ -1,6 +1,6 @@
 from PIL import Image
 
-import captcha_letters_cutter
+from simple_captcha_type import captcha_letters_cutter
 
 
 def decoder(image_file_name):

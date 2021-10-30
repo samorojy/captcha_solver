@@ -1,7 +1,8 @@
 import os
 import time
 from shutil import copyfile
-import captcha_decoder
+
+from simple_captcha_type import captcha_decoder
 
 
 def test(dataset_directory):
