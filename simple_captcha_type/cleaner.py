@@ -13,4 +13,4 @@ def clean_dataset(directory):
 
 
 if __name__ == '__main__':
-    clean_dataset("captcha_dataset\evergreen")
+    clean_dataset("captcha_dataset\\evergreen")

@@ -15,12 +15,13 @@ def test(dataset_directory):
             decode_result = captcha_decoder.decoder(os.path.join(dataset_directory, image_filename))
             print(f"{decode_result}:{captcha_solve}")
             if decode_result != captcha_solve:
-                copyfile(os.path.join(dataset_directory, image_filename), f"incorrect_captcha/{captcha_solve}.png")
+                copyfile(os.path.join(dataset_directory, image_filename),
+                         f"incorrect_captcha/{captcha_solve}.png")
                 os.remove(os.path.join(dataset_directory, filename))
                 os.remove(os.path.join(dataset_directory, image_filename))
 
 
 if __name__ == '__main__':
     start_time = time.time()
-    test("captcha_dataset\evergreen")
+    test("captcha_dataset\\evergreen")
     print(time.time() - start_time)
