@@ -1,16 +1,20 @@
+import os
 import unittest
 import captcha_decoder
 
 
-class TestStringMethods(unittest.TestCase):
+class TestDecoderOnDataset(unittest.TestCase):
 
-    def test_images(self):
-        self.assertEqual(captcha_decoder.decoder('captches/captcha (1).png'), 'CGCC')
-        self.assertEqual(captcha_decoder.decoder('captches/captcha (2).png'), 'UXCU')
-        self.assertEqual(captcha_decoder.decoder('captches/captcha (3).png'), 'GGVK')
-        self.assertEqual(captcha_decoder.decoder('captches/captcha (4).png'), 'KDND')
-        self.assertEqual(captcha_decoder.decoder('captches/captcha (5).png'), 'EFFE')
-        self.assertEqual(captcha_decoder.decoder('captches/captcha (6).png'), 'OIRQ')
+    def test_works_as_expected(self):
+        for filename in os.listdir("captcha_dataset\evergreen"):
+            if filename.endswith(".txt"):
+                file_with_captcha_solve = open(os.path.join("captcha_dataset\evergreen", filename))
+                expected = file_with_captcha_solve.read().upper()
+                image_filename = filename.replace("_request", "")[:-3] + "png"
+                decode_result = captcha_decoder.decoder(os.path.join("captcha_dataset\evergreen", image_filename))
+                file_with_captcha_solve.close()
+                with self.subTest():
+                    self.assertEqual(expected, decode_result)
 
 
 if __name__ == '__main__':
