@@ -1,4 +1,5 @@
 import os
+import warnings
 
 
 def clean_dataset(directory):
@@ -8,7 +9,7 @@ def clean_dataset(directory):
             image_filename = filename.replace("_request", "")[:-3] + "png"
             try:
                 os.remove(os.path.join(directory, image_filename))
-            except:
+            except FileNotFoundError:
                 print(image_filename)
 
 
