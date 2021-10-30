@@ -1,5 +1,4 @@
 import os
-import warnings
 
 
 def clean_dataset(directory):
