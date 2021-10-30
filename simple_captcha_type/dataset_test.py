@@ -8,7 +8,8 @@ import captcha_decoder
 def test(dataset_directory):
     for filename in os.listdir(dataset_directory):
         if filename.endswith(".txt"):
-            file_with_captcha_solve = open(os.path.join(dataset_directory, filename), encoding="UTF-8")
+            file_with_captcha_solve = open(os.path.join(dataset_directory, filename),
+                                           encoding="UTF-8")
             captcha_solve = file_with_captcha_solve.read().upper()
             file_with_captcha_solve.close()
             image_filename = filename.replace("_request", "")[:-3] + "png"
