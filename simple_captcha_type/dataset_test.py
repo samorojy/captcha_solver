@@ -2,7 +2,7 @@ import os
 import time
 from shutil import copyfile
 
-from simple_captcha_type import captcha_decoder
+import captcha_decoder
 
 
 def test(dataset_directory):
@@ -18,6 +18,7 @@ def test(dataset_directory):
                 copyfile(os.path.join(dataset_directory, image_filename), f"incorrect_captcha/{captcha_solve}.png")
                 os.remove(os.path.join(dataset_directory, filename))
                 os.remove(os.path.join(dataset_directory, image_filename))
+
 
 if __name__ == '__main__':
     start_time = time.time()

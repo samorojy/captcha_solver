@@ -1,4 +1,4 @@
-from simple_captcha_type import captcha_decoder
+import captcha_decoder
 
 if __name__ == '__main__':
     for number in range(1, 9):

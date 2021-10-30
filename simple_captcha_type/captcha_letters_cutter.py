@@ -10,8 +10,8 @@ def cut_letters(image_file_name):
     for i in range(0, 4):
         box = (i * 30, 0, (i * 30 + 30), 40)
         letters_list.append(image.crop(box))
-        #image.crop(box).save(f"letters/{i}.png")
     return letters_list
+
 
 # Clean the background noise, if color != white, then set to black.
 def clear_noise(image, threshold=200):
