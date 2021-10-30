@@ -15,13 +15,13 @@ def cut_letters(image_file_name):
 
 # Clean the background noise, if color != white, then set to black.
 def clear_noise(image, threshold=200):
-    pixdata = image.load()
+    pixel_data = image.load()
     for y_coordinate in range(image.size[1]):
         for x_coordinate in range(image.size[0]):
-            if (pixdata[x_coordinate, y_coordinate][0] > threshold) \
-                    and (pixdata[x_coordinate, y_coordinate][1] > threshold) \
-                    and (pixdata[x_coordinate, y_coordinate][2] > threshold):
+            if (pixel_data[x_coordinate, y_coordinate][0] > threshold) \
+                    and (pixel_data[x_coordinate, y_coordinate][1] > threshold) \
+                    and (pixel_data[x_coordinate, y_coordinate][2] > threshold):
 
-                pixdata[x_coordinate, y_coordinate] = (255, 255, 255)
+                pixel_data[x_coordinate, y_coordinate] = (255, 255, 255)
             else:
-                pixdata[x_coordinate, y_coordinate] = (0, 0, 0, 255)
+                pixel_data[x_coordinate, y_coordinate] = (0, 0, 0, 255)
