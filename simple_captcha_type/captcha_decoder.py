@@ -38,4 +38,6 @@ def detekt_letter(image):
         if letter_similarity_counter >= letter[1]:
             letter_similarity_list.append((letter, letter_similarity_counter))
     letter_similarity_list.sort(key=lambda k: k[1], reverse=True)
+    if not letter_similarity_list:
+        return '_', 0, 0
     return letter_similarity_list[0][0]
