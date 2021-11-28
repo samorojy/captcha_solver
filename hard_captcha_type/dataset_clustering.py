@@ -15,15 +15,15 @@ from keras.preprocessing.image import load_img
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 
-path = r"PATH TO DATASET"
+PATH = r"PATH TO DATASET"
 # change the working directory to the path where the images are located
-os.chdir(path)
+os.chdir(PATH)
 
 # this list holds all the image filename
 captchas = []
 
 # creates a ScandirIterator aliased as files
-with os.scandir(path) as files:
+with os.scandir(PATH) as files:
     # loops through each file in the directory
     for file in files:
         if file.name.endswith('.png'):
@@ -49,7 +49,7 @@ def extract_features(file, model):
 
 
 data = {}
-p = r"vectors.pkl"
+P = r"vectors.pkl"
 
 # lop through each image in the dataset
 for captcha in captchas:
@@ -59,7 +59,7 @@ for captcha in captchas:
         data[captcha] = feat
     # if something fails, save the extracted features as a pickle file (optional)
     except:
-        with open(p, 'wb') as file:
+        with open(P, 'wb') as file:
             pickle.dump(data, file)
 
 # get a list of the filenames
@@ -75,8 +75,8 @@ pca.fit(feat)
 x = pca.transform(feat)
 
 # cluster feature vectors
-cluster_numbers = 20
-kmeans = KMeans(n_clusters=cluster_numbers, random_state=22)
+CLUSTER_NUMBER = 20
+kmeans = KMeans(n_clusters=CLUSTER_NUMBER, random_state=22)
 kmeans.fit(x)
 
 # holds the cluster id and the images { id: [images] }
@@ -91,7 +91,7 @@ for file, cluster in zip(filenames, kmeans.labels_):
 
 # function that lets you view a cluster (based on identifier)
 def view_cluster(cluster):
-    plt.figure(figsize=(25, 25));
+    plt.figure(figsize=(25, 25))
     # gets the list of filenames for a cluster
     files = groups[cluster]
     # plot each image in the cluster
@@ -117,8 +117,8 @@ for k in list_k:
 plt.figure(figsize=(6, 6))
 plt.plot(list_k, sse)
 plt.xlabel(r'Number of clusters *k*')
-plt.ylabel('Sum of squared distance');
-for i in range(0, cluster_numbers):
+plt.ylabel('Sum of squared distance')
+for i in range(0, CLUSTER_NUMBER):
     for image in groups[i]:
         # view_cluster(i)
         copyfile(image, f"cluster{i}/{image}")
