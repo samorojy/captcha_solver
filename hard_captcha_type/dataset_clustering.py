@@ -58,7 +58,7 @@ for captcha in captchas:
         feat = extract_features(captcha, model)
         data[captcha] = feat
     # if something fails, save the extracted features as a pickle file (optional)
-    except:
+    except FileNotFoundError:
         with open(P, 'wb') as file:
             pickle.dump(data, file)
 
