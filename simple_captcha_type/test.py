@@ -1,7 +1,7 @@
 import os
 import unittest
 
-import captcha_decoder
+import captcha_ALGO_decoder
 
 
 class TestDecoderOnDataset(unittest.TestCase):
@@ -13,7 +13,7 @@ class TestDecoderOnDataset(unittest.TestCase):
                                                encoding="UTF-8")
                 expected = file_with_captcha_solve.read().upper()
                 image_filename = filename.replace("_request", "")[:-3] + "png"
-                decode_result = captcha_decoder.decoder(os.path.join("captcha_dataset\\evergreen",
+                decode_result = captcha_ALGO_decoder.decoder(os.path.join("captcha_dataset\\evergreen",
                                                                      image_filename))
                 file_with_captcha_solve.close()
                 with self.subTest():

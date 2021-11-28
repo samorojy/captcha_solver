@@ -5,7 +5,7 @@ from PIL import Image
 import captcha_letters_cutter
 
 
-def decoder(image_file_name):
+def algo_method_decoder(image_file_name):
     image = Image.open(image_file_name)
     image = image.convert("RGB")
     captcha_letters_cutter.clear_noise(image)
@@ -57,5 +57,5 @@ if __name__ == '__main__':
     for filename in os.listdir(DATASET_DIRECTORY):
         captcha_solve = filename[:-3]
         image_filename = captcha_solve + "png"
-        decode_result = decoder(os.path.join(DATASET_DIRECTORY, image_filename))
+        decode_result = algo_method_decoder(os.path.join(DATASET_DIRECTORY, image_filename))
         print(f"{decode_result}:{captcha_solve[:-1]} {decode_result == captcha_solve[:-1]}")
