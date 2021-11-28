@@ -1,7 +1,7 @@
 import os
 import time
 
-import captcha_OCR_decoder
+import captcha_ocr_decoder
 
 
 def test(dataset_directory):
@@ -14,7 +14,7 @@ def test(dataset_directory):
             captcha_solve = file_with_captcha_solve.read().upper()
             file_with_captcha_solve.close()
             image_filename = filename.replace("_request", "")[:-3] + "png"
-            decode_result = captcha_OCR_decoder.ocr_method_decoder(
+            decode_result = captcha_ocr_decoder.ocr_method_decoder(
                 os.path.join(dataset_directory, image_filename))
             count_of_captcha += 1
             print(f"{decode_result}:{captcha_solve}")

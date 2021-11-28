@@ -2,7 +2,7 @@ import os
 import time
 from shutil import copyfile
 
-import captcha_ALGO_decoder
+import captcha_algo_decoder
 
 
 def test(dataset_directory):
@@ -13,7 +13,8 @@ def test(dataset_directory):
             captcha_solve = file_with_captcha_solve.read().upper()
             file_with_captcha_solve.close()
             image_filename = filename.replace("_request", "")[:-3] + "png"
-            decode_result = captcha_ALGO_decoder.decoder(os.path.join(dataset_directory, image_filename))
+            decode_result = captcha_algo_decoder.decoder(
+                os.path.join(dataset_directory, image_filename))
             print(f"{decode_result}:{captcha_solve}")
             if decode_result != captcha_solve:
                 copyfile(os.path.join(dataset_directory, image_filename),
