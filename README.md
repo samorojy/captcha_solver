@@ -21,7 +21,7 @@ It is based on optical recognition. The selected OCR was Tesseract (pyTesseract)
 
 #### Metrics:
 
-Time: 523 seconds to solve 4232 CAPTCHAs
+Time: 520 seconds to solve 4232 CAPTCHAs
 
 Accuracy: about 10.5%
 
